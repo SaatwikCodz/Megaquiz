@@ -4,13 +4,11 @@ flag = ''
 customtkinter.set_appearance_mode("Dark")
 def Landing():
     global flag
-    app = CTk()
+    win1 = CTk()
     def landingnext():
-        nonlocal app
+        nonlocal win1
         flag = 'Landing Next Triggered'
-        app.destroy()
-    l = CTkButton(app, text = "Next", command = landingnext).pack()
+        win1.destroy()
+    l = CTkButton(win1, text = "Next", command = landingnext).pack()
     app.mainloop()
 Landing()
-if flag == 'Landing Next Triggered':
-    Two()
