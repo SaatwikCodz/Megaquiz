@@ -1,4 +1,5 @@
 from customtkinter import *
+from functions import *
 import pyautogui as pag
 import customtkinter
 from PIL import Image
@@ -38,6 +39,7 @@ def Landing():
     frame.place(x = w / 2 - (w - 121) / 2, y = h / 2 - (h - 101) / 2)
     label2 = CTkLabel(frame, text = 'Welcome Back!', font = ("Times", 75, "bold"), text_color = 'Black')
     label2.place(x = framex / 2- 230, y =10)
+
     def quitoff():
         nonlocal frame, win1
         nonlocal label2
@@ -117,6 +119,9 @@ def Login():
         j = 1
         flag = 'Go to Signup'.lower()
         return 
+    def laggin():
+        Username = entry1.get()
+        Password = entry2.get()
     button1 = CTkButton(frame, text = "Login!",font = ("Times", 55, "bold"),fg_color="transparent",width = 400 - 43, text_color = "#041a5d",border_width = 2, border_color = "blue",corner_radius = 12, hover_color = 'yellow').place(x = framex / 2 - 200, y = 275 + 136 + 100 - 50 - 20)
     button2 = CTkButton(frame, text = "SignUp!",font = ("Times", 55, "bold"),fg_color="transparent",width = 400 - 43, text_color = "#041a5d",border_width = 2, border_color = "blue",corner_radius = 12, hover_color = 'yellow', command = singup).place(x = framex / 2 - 200, y = 275 + 136 + 100 - 50 + 50 + 25)
     def last():
@@ -181,7 +186,15 @@ def SignUp():
         win3.destroy()
         flag = 'Go to Login'.lower()
         return 
-    button1 = CTkButton(frame, text = "Sign Up!",font = ("Times", 55, "bold"),fg_color="transparent",width = 400 - 43, text_color = "#041a5d",border_width = 2, border_color = "blue",corner_radius = 12, hover_color = 'yellow').place(x = framex / 2 - 200, y = 275 + 136 + 100 - 50 - 20)
+    def signer():
+        nonlocal entry1,entry2,frame
+        Username = entry1.get()
+        Password = entry2.get()
+        m= 'Sending-Signup' + ' ' + Username + ' ' + Password
+        resultancy = client_side(m)
+        if resultancy == 'Already User Exist Cannot SignUp':
+                lbl312 = CTkLabel(frame, text = "User already exists please log in", font =("Times", 30, "bold"), text_color = 'red').place(x = framex / 2 - 190, y = framey / 2 - 250 + 31 - 15)
+    button1 = CTkButton(frame, text = "Sign Up!",font = ("Times", 55, "bold"),fg_color="transparent",width = 400 - 43, text_color = "#041a5d",border_width = 2, border_color = "blue",corner_radius = 12, hover_color = 'yellow', command = signer).place(x = framex / 2 - 200, y = 275 + 136 + 100 - 50 - 20)
     button2 = CTkButton(frame, text = "Login!",font = ("Times", 55, "bold"),fg_color="transparent",width = 400 - 43, text_color = "#041a5d",border_width = 2, border_color = "blue",corner_radius = 12, hover_color = 'yellow', command = hogalalayou).place(x = framex / 2 - 200, y = 275 + 136 + 100 - 50 + 50 + 25)
     def last():
         nonlocal win3
